@@ -27,8 +27,6 @@
 		Iterator<String> iter = scoreMap.keySet().iterator();
 		while (iter.hasNext()) {
 			String key = iter.next(); // map의 과목명을 추출
-			
-			
 
 	%>
 		<tr>

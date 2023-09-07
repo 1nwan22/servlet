@@ -12,7 +12,7 @@
 <body>
 	<div class="container">
 		<h1>길이 변환</h1>
-		<form method="post" action="/lesson02/quiz05_1.jsp">
+		<form method="post" action="/lesson02/quiz04_1.jsp">
 			<div class="form-group d-flex">
 				<input type="text" class="form-control col-2" name="length">
 				<span>cm</span>

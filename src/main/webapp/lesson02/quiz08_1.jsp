@@ -59,16 +59,24 @@
         } 
     };
     list.add(map);
+    int id = Integer.valueOf(request.getParameter("id"));
     for (Map<String, Object> book : list) {
-    
+    	if (id == (Integer)book.get("id")) {
 	%>
 	
 	<div class="container d-flex">
 		<div>
-			<image src=<%= book.get("image") %> width="100" value="image">
+			<image src=<%= book.get("image") %> value="image">
+		</div>
+		<div>
+			<div class="font-weight-bold display-1"><%= book.get("title") %></div>
+			<div class="display-2 text-info"><%= book.get("author") %></div>
+			<div class="display-3 text-secondary"><%= book.get("publisher") %></div>
 		</div>
 	</div>
 	<%
+			return;
+    	}
     }
 	%>
 </body>

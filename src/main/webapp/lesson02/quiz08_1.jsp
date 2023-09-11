@@ -59,25 +59,27 @@
         } 
     };
     list.add(map);
+    
+    // 테이블에 보여줄 책 정보(target) 뽑아내기
     int id = Integer.valueOf(request.getParameter("id"));
+    Map<String, Object> target = new HashMap<>();
     for (Map<String, Object> book : list) {
     	if (id == (Integer)book.get("id")) {
+    		target = book;
+    		break;
+    	}
+    }
 	%>
 	
 	<div class="container d-flex">
 		<div>
-			<image src=<%= book.get("image") %> value="image">
+			<image src=<%= target.get("image") %> alt="표지 이미지">
 		</div>
 		<div>
-			<div class="font-weight-bold display-1"><%= book.get("title") %></div>
-			<div class="display-2 text-info"><%= book.get("author") %></div>
-			<div class="display-3 text-secondary"><%= book.get("publisher") %></div>
+			<div class="display-1 font-weight-bold"><%= target.get("title") %></div>
+			<div class="display-2 text-info"><%= target.get("author") %></div>
+			<div class="display-3 text-secondary"><%= target.get("publisher") %></div>
 		</div>
 	</div>
-	<%
-			return;
-    	}
-    }
-	%>
 </body>
 </html>

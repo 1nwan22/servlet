@@ -18,7 +18,8 @@
 		<h1 class="">책 목록</h1>
 		<table class="table text-center">
 			<thead>
-				<tr>
+			<!-- row class 설정 -->
+				<tr class="row">
 					<th class="col-1">id</th>
 					<th class="col-3">표지</th>
 					<th class="col-8">제목</th>
@@ -75,10 +76,10 @@
 		    	
 		    
 			%>
-				<tr>
-					<td name="id"><%= book.get("id")  %></td>
-					<td><image src=<%= book.get("image") %> width="100" value="image" name="image"></td>
-					<td><a href=http://localhost/lesson02/quiz08_1.jsp?id=<%=book.get("id") %>><%= book.get("title") %></a></td>
+				<tr class="row">
+					<td class="col-1" name="id"><%= book.get("id")  %></td>
+					<td class="col-3"><image src=<%= book.get("image") %> width="80" alt="표지" name="image"></td>
+					<td class="col-8"><a href=http://localhost/lesson02/quiz08_1.jsp?id=<%= book.get("id") %>><%= book.get("title") %></a></td>
 				</tr>
 			<%
 			}

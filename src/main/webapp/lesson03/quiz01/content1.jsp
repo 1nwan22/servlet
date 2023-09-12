@@ -51,8 +51,10 @@
 	</thead>
 	<tbody>
 <%
-  
+	String checkedCategory = request.getParameter("category");
+	Map<String, String> target = new HashMap<>();
     for (Map<String, String> channel : list) {
+    	if (checkedCategory == null) {
     		
 %>
 		<tr>
@@ -63,6 +65,18 @@
 
 
 <%
+    	} else if (checkedCategory.equals(channel.get("category"))) {
+    		target = channel;
+  	%>
+    		<tr>
+    			<td><%= target.get("ch") %></td>
+    			<td><%= target.get("name") %></td>
+    			<td><%= target.get("category") %></td>
+    		</tr>
+
+
+    <%    		
+    	}
     }
 %>
 	</tbody>

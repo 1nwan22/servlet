@@ -11,18 +11,18 @@
 <title>Melong</title>
 </head>
 <body>
-	<div id="wrap" class="container bg-secondary">
-		<header class="bg-primary d-flex align-items-center">
-			<jsp:include page="header.jsp"></jsp:include>
+	<div id="wrap" class="container">
+		<header class="d-flex align-items-center">
+			<jsp:include page="header.jsp" />
 		</header>
-		<nav class="bg-warning">
-			<jsp:include page="nav.jsp"></jsp:include>
+		<nav>
+			<jsp:include page="nav.jsp" />
 		</nav>
-		<section class="contents bg-light">
-			<jsp:include page="content1.jsp"></jsp:include>
+		<section class="contents">
+			<jsp:include page="content1.jsp" />
 		</section>
-		<footer class="bg-danger">
-			<jsp:include page="footer.jsp"></jsp:include>
+		<footer>
+			<jsp:include page="footer.jsp" />
 		</footer>
 	</div>
 </body>

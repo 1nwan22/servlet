@@ -54,28 +54,17 @@
 	String checkedCategory = request.getParameter("category");
 	Map<String, String> target = new HashMap<>();
     for (Map<String, String> channel : list) {
-    	if (checkedCategory == null) {
+    	// 카테고리가 null일 때(전체) 또는 카테고리와 일치할 때
+    	if (checkedCategory == null || checkedCategory.equals(channel.get("category"))) {
+    		target = channel;
     		
 %>
-		<tr>
-			<td><%= channel.get("ch") %></td>
-			<td><%= channel.get("name") %></td>
-			<td><%= channel.get("category") %></td>
-		</tr>
-
-
-<%
-    	} else if (checkedCategory.equals(channel.get("category"))) {
-    		target = channel;
-  	%>
     		<tr>
     			<td><%= target.get("ch") %></td>
     			<td><%= target.get("name") %></td>
     			<td><%= target.get("category") %></td>
     		</tr>
-
-
-    <%    		
+<%    		
     	}
     }
 %>

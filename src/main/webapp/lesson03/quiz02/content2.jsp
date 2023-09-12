@@ -80,39 +80,77 @@
     musicInfo.put("lyricist", "아이유");
     musicList.add(musicInfo);
 %>
+<h4 class="font-weight-bold">곡 정보</h4>
 <div class="content1 informaiton d-flex mt-3 p-3">
+	<%
+		int id = Integer.valueOf(request.getParameter("id"));
+		String search = request.getParameter("search");
+		for (Map<String, Object> music : musicList) {
+			if (search == null) {
+				if (id == (int)music.get("id")) {
+					String time = ((int)music.get("time") / 60) + ":" + ((int)music.get("time") % 60);
+			
+	%>
 	<div>
-		<img src=<%= artistInfo.get("photo") %> alt="프로필이미지" width="170px" height="170px" id="artistPhoto">
+		<img src=<%= music.get("thumbnail") %> alt="앨범이미지" height="250">
 	</div>
 	<div class="ml-3">
-		<h3><%= artistInfo.get("name") %></h3>
-		<div><%= artistInfo.get("agency") %></div>
-		<div><%= artistInfo.get("debute") %> 데뷔</div>
+		<h1 class="display-4"><%= music.get("title") %></h1>
+		<div class="text-success font-weight-bold pt-1 mb-2"><%= music.get("singer") %></div>
+		<div class="d-flex pt-3">
+			<div class="text-secondary mr-4">
+				<div>앨범</div>
+				<div>재생시간</div>
+				<div>작곡가</div>
+				<div>작사가</div>
+			</div>
+			<div class="text-secondary">
+				<div><%= music.get("album") %></div>
+				<div class="text-dark"><%= time %></div>
+				<div><%= music.get("composer") %></div>
+				<div><%= music.get("lyricist") %></div>
+			</div>
+		</div>
 	</div>
+	<%	
+				}
+			} else if (search != null) {
+				if (search.equals(music.get("title"))) {
+					String time = ((int)music.get("time") / 60) + ":" + ((int)music.get("time") % 60);
+					
+	%>
+					<div>
+						<img src=<%= music.get("thumbnail") %> alt="앨범이미지" height="250">
+					</div>
+					<div class="ml-3">
+						<h1 class="display-4"><%= music.get("title") %></h1>
+						<div class="text-success font-weight-bold pt-1 mb-2"><%= music.get("singer") %></div>
+						<div class="d-flex pt-3">
+							<div class="text-secondary mr-4">
+								<div>앨범</div>
+								<div>재생시간</div>
+								<div>작곡가</div>
+								<div>작사가</div>
+							</div>
+							<div class="text-secondary">
+								<div><%= music.get("album") %></div>
+								<div class="text-dark"><%= time %></div>
+								<div><%= music.get("composer") %></div>
+								<div><%= music.get("lyricist") %></div>
+							</div>
+						</div>
+					</div>
+	<%				
+				}
+			}	
+		}
+	%>
 </div>
-<div class="mt-3">
-	<h4 class="font-weight-bold">곡 목록</h4>
-	<table class="table text-center">
-		<thead>
-			<tr>
-				<th class="col-2">no</th>
-				<th class="col-4">제목</th>
-				<th class="col-6">앨범</th>
-			</tr>
-		</thead>
-		<tbody>
-		<%
-			for (Map<String, Object> music : musicList) {
-			
-		%>
-			<tr>
-				<td class="col-2"><%= music.get("id") %></td>
-				<td class="col-4"><a href="http://localhost/lesson03/quiz02/layout2.jsp?id=<%= music.get("id") %>"><%= music.get("title") %></a></td>
-				<td class="col-6"><%= music.get("album") %></td>
-			</tr>
-		<%
-			}
-		%>
-		</tbody>
-	</table>
+<div class="mt-5">
+	<h3 class="font-weight-bold">가사</h3>
+	<hr>
+	<h6>가사 정보 없음</h6>
+	<br>
+	<br>
+	<hr>
 </div>

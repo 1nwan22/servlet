@@ -83,18 +83,21 @@
 <h4 class="font-weight-bold">곡 정보</h4>
 <div class="content1 informaiton d-flex mt-3 p-3">
 	<%
+		Integer id = Integer.valueOf(request.getParameter("id"));
 		String search = request.getParameter("search");
+		Map<String, Object> target = new HashMap<>();
 		for (Map<String, Object> music : musicList) {
-			if (search.equals(music.get("title"))) {
-					String time = ((int)music.get("time") / 60) + ":" + ((int)music.get("time") % 60);
-			
+			String time = ((int)music.get("time") / 60) + ":" + ((int)music.get("time") % 60);
+			if (id != null) {
+				if (Integer.valueOf(id) == (int)music.get("id")) {
+					target = music;
 	%>
 	<div>
-		<img src=<%= music.get("thumbnail") %> alt="앨범이미지" height="250">
+		<img src=<%= target.get("thumbnail") %> alt="앨범이미지" height="250">
 	</div>
 	<div class="ml-3">
-		<h1 class="display-4"><%= music.get("title") %></h1>
-		<div class="text-success font-weight-bold pt-1 mb-2"><%= music.get("singer") %></div>
+		<h1 class="display-4"><%= target.get("title") %></h1>
+		<div class="text-success font-weight-bold pt-1 mb-2"><%= target.get("singer") %></div>
 		<div class="d-flex pt-3">
 			<div class="text-secondary mr-4">
 				<div>앨범</div>
@@ -103,25 +106,44 @@
 				<div>작사가</div>
 			</div>
 			<div class="text-secondary">
-				<div><%= music.get("album") %></div>
+				<div><%= target.get("album") %></div>
 				<div class="text-dark"><%= time %></div>
-				<div><%= music.get("composer") %></div>
-				<div><%= music.get("lyricist") %></div>
+				<div><%= target.get("composer") %></div>
+				<div><%= target.get("lyricist") %></div>
 			</div>
 		</div>
 	</div>
-	<%	
+	<%
 				}
-		}		
-		String id = request.getParameter("id");
-		Integer id = Integer.valueOf(request.getParameter("id"));
-		String search = request.getParameter("search");
-		Map<String, Object> target = new HashMap<>();
-		for (Map<String, Object> music : musicList) {
-			String time = ((int)music.get("time") / 60) + ":" + ((int)music.get("time") % 60);
-			if (search == null) {
-				if (id == (int)music.get("id")) {
-					target = music;
+			} else if (search != null) {
+				if (search.equals(music.get("title"))) {
+				target = music;
+	%>
+	<div>
+		<img src=<%= target.get("thumbnail") %> alt="앨범이미지" height="250">
+	</div>
+	<div class="ml-3">
+		<h1 class="display-4"><%= target.get("title") %></h1>
+		<div class="text-success font-weight-bold pt-1 mb-2"><%= target.get("singer") %></div>
+		<div class="d-flex pt-3">
+			<div class="text-secondary mr-4">
+				<div>앨범</div>
+				<div>재생시간</div>
+				<div>작곡가</div>
+				<div>작사가</div>
+			</div>
+			<div class="text-secondary">
+				<div><%= target.get("album") %></div>
+				<div class="text-dark"><%= time %></div>
+				<div><%= target.get("composer") %></div>
+				<div><%= target.get("lyricist") %></div>
+			</div>
+		</div>
+	</div>
+	<%
+				}
+			}
+		}
 	%>
 </div>
 <div class="mt-5">

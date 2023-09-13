@@ -86,11 +86,12 @@
 		String id = request.getParameter("id");
 		String search = request.getParameter("search");
 		Map<String, Object> target = new HashMap<>();
-		for (Map<String, Object> music : musicList) {
-			String time = ((int)music.get("time") / 60) + ":" + ((int)music.get("time") % 60);
-			if (search == null) {
+		if (id != null) {
+			for (Map<String, Object> music : musicList) {
 				if (Integer.valueOf(id) == (int)music.get("id")) {
+					String time = ((int)music.get("time") / 60) + ":" + ((int)music.get("time") % 60);
 					target = music;
+					break;
 	%>
 	<div>
 		<img src=<%= target.get("thumbnail") %> alt="앨범이미지" height="250">
@@ -115,9 +116,13 @@
 	</div>
 	<%
 				}
-			} else if (id == null) {
+			}
+		}
+		if (search != null) {
+			for (Map<String, Object> music : musicList) {
 				if (search.equals(music.get("title"))) {
-				target = music;
+					String time = ((int)music.get("time") / 60) + ":" + ((int)music.get("time") % 60);
+					target = music;
 	%>
 	<div>
 		<img src=<%= target.get("thumbnail") %> alt="앨범이미지" height="250">
@@ -125,14 +130,14 @@
 	<div class="ml-3">
 		<h1 class="display-4"><%= target.get("title") %></h1>
 		<div class="text-success font-weight-bold pt-1 mb-2"><%= target.get("singer") %></div>
-		<div class="d-flex pt-3">
-			<div class="text-secondary mr-4">
+		<div class="d-flex pt-3 text-secondary">
+			<div class="mr-4">
 				<div>앨범</div>
 				<div>재생시간</div>
 				<div>작곡가</div>
 				<div>작사가</div>
 			</div>
-			<div class="text-secondary">
+			<div>
 				<div><%= target.get("album") %></div>
 				<div class="text-dark"><%= time %></div>
 				<div><%= target.get("composer") %></div>

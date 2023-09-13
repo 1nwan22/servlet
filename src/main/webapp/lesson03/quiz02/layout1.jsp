@@ -16,10 +16,10 @@
 			<jsp:include page="header.jsp" />
 		</header>
 		<nav>
-			<jsp:include page="nav.jsp" />
+			<jsp:include page="menu.jsp" />
 		</nav>
 		<section class="contents">
-			<jsp:include page="content1.jsp" />
+			<jsp:include page="listContent.jsp" />
 		</section>
 		<footer>
 			<jsp:include page="footer.jsp" />

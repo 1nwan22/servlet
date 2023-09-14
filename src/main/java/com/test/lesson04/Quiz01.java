@@ -21,10 +21,9 @@ public class Quiz01 extends HttpServlet {
 
 		MysqlService ms = MysqlService.getInstance();
 		ms.connect();
-		
+
 		String insertQuery = "insert into `real_estate`"
-				+ "(`realtorId`, `address`, `area`, `type`, `price`, `rentPrice`)"
-				+ "values"
+				+ "(`realtorId`, `address`, `area`, `type`, `price`, `rentPrice`)" + "values"
 				+ "(3, '헤라펠리스 101동 5305호', 350, '매매', 1500000, NULL)";
 		try {
 			ms.update(insertQuery);
@@ -33,11 +32,12 @@ public class Quiz01 extends HttpServlet {
 		}
 
 		PrintWriter out = response.getWriter();
-		String query = "select * from `real_estate` order by `Id` desc limit 10;";
+		String selectquery = "select `address`, `area`, `type` from `real_estate` order by `Id` desc limit 10;";
 		try {
-			ResultSet res = ms.select(query);
+			ResultSet res = ms.select(selectquery);
 			while (res.next()) {
-				out.println("매물주소: " + res.getString("address") + ", 면적:" + res.getInt("area") + ", 타입:" + res.getString("type"));
+				out.println("매물주소: " + res.getString("address") + ", 면적:" + res.getInt("area") + ", 타입:"
+						+ res.getString("type"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

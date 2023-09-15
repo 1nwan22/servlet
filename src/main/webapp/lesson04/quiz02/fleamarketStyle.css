@@ -1,0 +1,9 @@
+@charset "UTF-8";
+#wrap {height: 1000px;}
+a, a:hover {text-decoration: none;}
+header {height: 100px; background-color: #ff7f50;}
+nav {height: 80px; background-color: #ff7f50;}
+.contents {min-height: 500px;}
+.contents .contents-box {border: 1px; border-color: #ff7f50;}
+.font-color {color: #ff7f50;}
+footer {height: 30px;}

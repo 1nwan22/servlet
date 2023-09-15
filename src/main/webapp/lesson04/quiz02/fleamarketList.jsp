@@ -11,17 +11,17 @@
 <title>홍당무 마켓</title>
 </head>
 <body>
-	<div id="wrap" class="container bg-secondary">
-		<header class="bg-primary d-flex align-items-center justify-content-center">
+	<div id="wrap" class="container">
+		<header class="d-flex align-items-center justify-content-center">
 			<jsp:include page="header.jsp"></jsp:include>
 		</header>
-		<nav class="bg-success d-flex align-items-center">
+		<nav class="d-flex align-items-center">
 			<jsp:include page="menu.jsp"></jsp:include>
 		</nav>
-		<section class="contents bg-warning">
+		<section class="contents">
 			<jsp:include page="productList.jsp"></jsp:include>
 		</section>
-		<footer class="bg-danger d-flex align-items-center justify-content-center">
+		<footer class="d-flex align-items-center justify-content-center">
 			<jsp:include page="footer.jsp"></jsp:include>
 		</footer>
 	</div>

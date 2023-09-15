@@ -13,13 +13,13 @@
 	<div class="container">
 		<h1 class="font-weight-bold">즐겨찾기 추가</h1>
 		<form method="post" action="/lesson04/add-bookmark">
-			<div class="mt-1 mb-1">
-				<div class="font-weight-bold">사이트명:</div>
-				<input type="text" name="siteName" class="form-control col-4">
+			<div class="form-group mt-1 mb-1">
+				<label for="name" class="font-weight-bold">사이트명:</label>
+				<input type="text" name="name" id="name" class="form-control col-4">
 			</div>
-			<div class="mt-1 mb-1">
-				<div class="font-weight-bold">사이트 주소:</div>
-				<input type="text" name="siteUrl" class="form-control col-6">
+			<div class="form-group mt-1 mb-1">
+				<label for="url" class="font-weight-bold">사이트 주소:</label>
+				<input type="text" name="url" id="url" class="form-control col-6">
 			</div>
 			<input type="submit" value="추가" class="btn btn-success mt-2">
 		</form>

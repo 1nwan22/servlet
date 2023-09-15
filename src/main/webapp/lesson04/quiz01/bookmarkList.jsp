@@ -29,17 +29,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			<%
-				while(res.next()) {
-			%>		
+		<%
+			while(res.next()) {
+		%>		
 			<tr>
 				<td><%= res.getString("name") %></td>
-				<td><a href="<%= res.getString("url") %>"><%= res.getString("url") %></a></td>
-				<td><a href="/lesson04/delete-bookmark?id=<%= res.getInt("id") %>">삭제</a></td>
+				<td><a href="<%= res.getString("url") %>" target="_blank"><%= res.getString("url") %></a></td>
+				<td><a href="/lesson04/delete-bookmark?id=<%= res.getInt("id") %>" class="btn btn-danger">삭제</a></td>
 			</tr>
-			<%
-				}
-			%>
+		<%
+			}
+		%>
 		</tbody>
 	</table>
 <%

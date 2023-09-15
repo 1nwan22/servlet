@@ -16,13 +16,13 @@ public class AddBookmarkServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		String siteName = request.getParameter("siteName");
-		String siteUrl = request.getParameter("siteUrl");
+		String name = request.getParameter("name");
+		String url = request.getParameter("url");
 		
 		MysqlService ms = MysqlService.getInstance();
 		ms.connect();
 		
-		String insertQuery = "insert into `bookmark` (`name`, `url`) values ('" + siteName + "', '" + siteUrl + "')";
+		String insertQuery = "insert into `bookmark` (`name`, `url`) values ('" + name + "', '" + url + "')";
 		try {
 			ms.update(insertQuery);
 		} catch (SQLException e) {

@@ -12,38 +12,38 @@
     
  
 <div class="mt-3 mb-5">
-<div class="content1 d-flex flex-wrap align-content: flex-start m-auto">
+	<div class="content1 d-flex flex-wrap align-content: flex-start m-auto">
 	<%
 		while(res.next()) {
-			if (res.getString("pictureUrl") == null) {
-			
 	%>
-	<div class="contents-box p-3">
-		<div class="d-flex justify-content-center align-items-center">
-			<div class="d-flex align-items-center justify-content-center none-img">
-				<h3 class="text-secondary font-weight-bold">이미지 없음</h3>
-			</div>
-		</div>		
-		<div class="font-title font-weight-bold mt-1"><%= res.getString("title") %></div>		
-		<div class="font-price text-secondary font-weight-bold"><%= res.getInt("price") %>원</div>		
-		<div class="font-nickname font-weight-bold mt-1"><%= res.getString("nickname") %></div>		
-	</div>
-	<% 
+		<div class="contents-box p-3">
+			<div>
+	<%		
+			if (res.getString("pictureUrl") == null || res.getString("pictureUrl").equals("")) {
+	%>
+				<div class="img-box d-flex align-items-center justify-content-center">
+					<h3 class="text-secondary font-weight-bold">이미지 없음</h3>
+				</div>
+	<%
 			} else {
-	%>
-	<div class="contents-box p-3">
-		<div>
-			<img src="<%= res.getString("pictureUrl") %>" alt="상품이미지" width="100%" height="200px">
-		</div>		
-		<div class="font-title font-weight-bold mt-1"><%= res.getString("title") %></div>		
-		<div class="font-price text-secondary font-weight-bold"><%= res.getInt("price") %>원</div>		
-		<div class="font-nickname font-weight-bold mt-1"><%= res.getString("nickname") %></div>		
-	</div>
-
-<%
+	%>	
+				<div class="img-box">
+					<img class="w-100 h-100" src="<%= res.getString("pictureUrl") %>">
+				</div>	
+	<% 
 			}
+		
+	%>
+			</div>		
+			<div class="font-title font-weight-bold mt-1"><%= res.getString("title") %></div>		
+			<div class="font-price text-secondary font-weight-bold"><%= res.getInt("price") %>원</div>		
+			<div class="font-nickname font-weight-bold mt-1"><%= res.getString("nickname") %></div>
+		</div>
+<%
 		}
-	ms.disconnect();
 %>
+	</div>
 </div>
-</div>
+<%
+ms.disconnect();
+%>

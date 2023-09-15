@@ -14,21 +14,21 @@
 	
 %>
 <div>
-	<form method="post" action="/lesson04/add-product">
+	<form name="inputForm" method="post" action="/lesson04/add-product">
 		<div class="form-group m-2 d-flex justify-content-between">
-			<select class="form-control col-3 font-weight-bold text-center" name="nickname">
-				<option checked>-아이디 선택-</option>
+			<select class="form-control col-3 font-weight-bold text-center" name="sellerId" id="sellerId">
+				<option value="default" selected>-아이디 선택-</option>
 			<%
 				while(res.next()) {
 			%>
-				<option><%= res.getString("nickname") %></option>
+				<option value="<%=res.getInt("id") %>"><%= res.getString("nickname") %></option>
 			<%
 				}
 			%>
 			</select>
-			<input type="text" class="form-control col-5 font-weight-bold" name="title" placeholder="제목">
+			<input type="text" class="form-control col-5 font-weight-bold" name="title" id="title" placeholder="제목">
 			<div class="input-group mb-3 col-3">
-  				<input type="text" class="form-control font-weight-bold" name="price" placeholder="가격">
+  				<input type="text" class="form-control font-weight-bold" name="price" id="price" placeholder="가격">
   				<span class="input-group-text font-weight-bold">원</span>
 			</div>
 		</div>
@@ -37,17 +37,18 @@
 		</div>
 		<div class="form-group m-2">
 			<div class="input-group mb-3">
-  				<span class="input-group-text">이미지 url</span>
-  				<input type="text" class="form-control" name="pictureUrl">
+  				<label for="pictureUrl" class="font-weight-bold input-group-text">이미지 url</label>
+  				<input type="text" class="form-control" name="pictureUrl" id="pictureUrl">
 			</div>
 		</div>
-		<input type="submit" value="저장" class="form-control btn btn-light">
+		<input type="submit" value="저장" class="btn-register form-control font-weight-bold btn btn-light">
 	</form>
 </div>
 </div>
 <%
 ms.disconnect();
+%>
 
-
+<%
 response.sendRedirect("/lesson04/quiz02/fleamarketList.jsp");
 %>

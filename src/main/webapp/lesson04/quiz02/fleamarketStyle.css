@@ -1,12 +1,12 @@
 @charset "UTF-8";
-#wrap {height: 1000px;}
 a, a:hover {text-decoration: none;}
 header {height: 100px; background-color: #ff7f50;}
 nav {height: 80px; background-color: #ff7f50;}
 .contents {min-height: 500px;}
 .content1 {gap: 2%;}
 .contents .contents-box {border: 2px solid; border-color: #ff7f50; margin-top: 7px; margin-bottom: 7px; width: 32%;}
-.none-img {width: 100%; height: 200px;}
+.contents .contents-box:hover {border: 2px solid; border-color: #ff7f50; margin-top: 7px; margin-bottom: 7px; width: 32%; background-color: #F9E3D8;}
+.contents .img-box {width: 100%; height: 180px;}
 .font-title {font-size: 21px;}
 .font-price {font-size: 18px;}
 .font-nickname {color: #ff7f50; font-size: 18px;}

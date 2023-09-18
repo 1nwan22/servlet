@@ -14,7 +14,7 @@
 	
 %>
 <div>
-	<form name="inputForm" method="post" action="/lesson04/add-product">
+	<form id="inputForm" method="post" action="/lesson04/add-product">
 		<div class="form-group m-2 d-flex justify-content-between">
 			<select class="form-control col-3 font-weight-bold text-center" name="sellerId" id="sellerId">
 				<option value="default" selected>-아이디 선택-</option>
@@ -41,14 +41,10 @@
   				<input type="text" class="form-control" name="pictureUrl" id="pictureUrl">
 			</div>
 		</div>
-		<input type="submit" value="저장" class="btn-register form-control font-weight-bold btn btn-light">
+		<input type="submit"  value="저장" class="btn-register form-control font-weight-bold btn btn-light">
 	</form>
 </div>
 </div>
 <%
 ms.disconnect();
-%>
-
-<%
-response.sendRedirect("/lesson04/quiz02/fleamarketList.jsp");
 %>

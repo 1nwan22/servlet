@@ -17,11 +17,11 @@ public class AddProductServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
-		int sellerId = Integer.valueOf(request.getParameter("sellerId"));
 		String title = request.getParameter("title");
 		int price = Integer.valueOf(request.getParameter("price"));
 		String description = request.getParameter("description");
 		String pictureUrl = request.getParameter("pictureUrl");
+		int sellerId = Integer.valueOf(request.getParameter("sellerId"));
 		
 		
 		MysqlService ms = MysqlService.getInstance();
